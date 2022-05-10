@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<h4>DataModel</h4>
+<hr />
+@using (Html.BeginForm()) 
+{  
+<table>  
+    <tr>  
+        <th>
+            First Number
+        </th>  
+        <td> 
+            <input type="text" id="model.x" name="inputX" class="form-control"/> 
+        </td>  
+    </tr>  
+    <tr>  
+        <th>
+            Second Number
+        </th>  
+        <td> 
+            <input type="text" id="model.y" name="inputY" class="form-control"/> 
+        </td>  
+    </tr>  
+    <tr>  
+        <th>
+            <input type="submit" name="Create" value="Create" class="btn btn-primary"/>
+        </th>  
+
+    </tr>  
+    <tr>  
+        <th>Result</th>  
+        <td><input type="text" class="form-control" value="@ViewBag.Result" /> </td>  
+    </tr>  
+</table> 
+} 
+ 
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
