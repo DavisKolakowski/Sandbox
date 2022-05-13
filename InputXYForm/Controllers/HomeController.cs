@@ -18,18 +18,24 @@ namespace InputXYForm.Controllers
             var model = new DataModel();
             model.x = Convert.ToDecimal(inputX);
             model.y = Convert.ToDecimal(inputY);
-                decimal result = 100M;
-                result = Create(model.x, model.y);
-                ViewBag.Result = result;
+            var result = Create(Convert.ToDouble(model.x), Convert.ToInt32(model.y));
+                ViewBag.Addition = $"{inputX} + {inputY} = {result.Addition}";
+                ViewBag.Subtraction = $"{inputX} - {inputY} = {result.Subtraction}";
+                ViewBag.Multiplication = $"{inputX} * {inputY} = {result.Multiplication}";
+                ViewBag.Division = $"{inputX} / {inputY} = {result.Division}";
                 return View();
-
         }
-
         [HttpPost]
-        public decimal Create(decimal inputX, decimal inputY)
+        public ResultsModel Create(double inputX, int inputY)
         {
-            var result = inputX + inputY;
-                return result;
+            var model = new ResultsModel()
+            {
+                Addition = inputX + inputY,
+                Subtraction = inputX - inputY,
+                Multiplication = inputX * inputY,
+                Division = inputX / inputY
+            };
+            return model;
         }
 
         public IActionResult Privacy()
